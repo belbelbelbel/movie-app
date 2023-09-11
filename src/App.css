@@ -1,38 +1,56 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
   display: flex;
   flex-direction: column;
+}
+.Header {
+  background-color: rgb(82, 144, 168);
+  color: rgb(242, 240, 240);
+  display: flex;
+  font-family: cursive;
+  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 10px;
+  font-size: 25px;
+  font-weight: bold;
+  box-shadow: 0 3px 6px 0 #555;
 }
-
-.App-link {
-  color: #61dafb;
+.searchbox {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 10px;
+  border-radius: 6px;
+  margin-left: 20px;
+  width: 40%;
+  background-color: white;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.appname {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.movieimage {
+  width: 48px;
+  height: 48px;
+  margin: 15px;
+}
+.searchicon {
+  width: 22px;
+  height: 22px;
+}
+.searchinput {
+  color: rgb(29, 28, 28);
+  font-size: 20px;
+  font-weight: 2px;
+  border: none;
+  outline: none;
+  margin-left: 5px;
+}
+.movielistcontainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 30px;
+  gap: 24px;
+  justify-content: space-evenly;;
 }
