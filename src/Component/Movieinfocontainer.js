@@ -77,7 +77,7 @@ export const Movieinfocontainer = ({ selectedMovie,setselectedMovie }) => {
 
   return (
     <Container>
-      {movie ?(
+      {movie.Title ? (
       <>
         <CoverImage src={movie?.Poster} alt="Movie Poster" />{/* Use movie?.Poster */}
       <InfoColumn>
@@ -115,8 +115,11 @@ export const Movieinfocontainer = ({ selectedMovie,setselectedMovie }) => {
               Plot: <span>{movie?.Plot}</span>
             </MovieInfo>
           </InfoColumn>
-          <Close onClick={()=> setselectedMovie()}><span>x</span> </Close>
-      </>): "loading...."}
+          <Close onClick={()=> setselectedMovie(null)}><span>x</span> </Close>
+      </>
+      ):(
+        "loading..."
+      )}
       
     </Container>
   );

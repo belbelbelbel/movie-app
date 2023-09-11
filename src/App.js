@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import { MovielistContainer } from './Component/MovielistContainer';
 import axios from 'axios';
@@ -16,10 +16,25 @@ function App() {
   const [timeout, setimeout] = useState()
   const [movielist, setmovielist] = useState([])
   const [selectedMovie, setselectedMovie] = useState()
+  const [rotate,setrotate] = useState(0)
   const fetch = async (searchString) => {
     const res = await axios.get(`https://www.omdbapi.com/?s=${searchString}&apikey=${API_KEY}`)
     setmovielist(res.data.Search)
   }
+  const rotational = () => {
+    setrotate(rotate + 10)
+  }
+  useEffect(() => {
+    const interval  = setInterval (rotational, 100);
+    return () => {
+      clearInterval(interval)
+    };
+  }, [rotate]);
+  
+  const imageStyle = {
+    transform: `rotate(${rotate}deg)`, // Apply the rotation transform style
+    transition: 'transform 0.1s ease-out', // Add a smooth transition effect
+  };
   const handlechange = (e) => {
     clearTimeout(timeout)
     setsearchquery(e.target.value)
@@ -33,7 +48,7 @@ function App() {
       <div className='Header'>
         <div className='appname'>
           <img src="/movie-icon.svg" alt="movie" className='movieimage' />
-          Movie Apps
+          Movie Application
         </div>
         <div className='searchbox'>
           <div className="searchicon">
@@ -49,7 +64,7 @@ function App() {
       </div>
       <div className='movielistcontainer'>
         {
-          movielist?.length ?   movielist.map((movie,index) => <MovielistContainer key={index} setselectedMovie={setselectedMovie} movie={movie}/>):<Placeholder src="/movie-icon.svg" />
+          movielist?.length ?   movielist.slice(2,100).map((movie,index) => <MovielistContainer key={index} setselectedMovie={setselectedMovie} movie={movie}/>):<Placeholder src="/movie-icon.svg" alt='moviesss'  style={imageStyle} />
 
         }
       </div>
